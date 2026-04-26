@@ -1,0 +1,14 @@
+name: Binder PReview Badge
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: jupyterlab/maintainer-tools/.github/actions/binder-link@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
